@@ -16,8 +16,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { IMaskModule } from 'angular-imask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { HttpClientModule } from '@angular/common/http';
-import { AlertModule } from 'ngx-bootstrap/alert';
-import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -39,9 +37,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ReactiveFormsModule,
     IMaskModule,
     CurrencyMaskModule,
-    HttpClientModule,
-    AlertModule.forRoot(),
-    ModalModule.forRoot()
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from '../shared/cliente.model';
 import { ClientesService } from './clientes.service';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-cliente-list',
@@ -13,7 +12,7 @@ export class ClienteListComponent implements OnInit{
 
   filtro: string = '';
   ordenacao: string = "Nome";
-  exibirLista: number = 5;
+  exibirLista: number;
 
   clientes: Cliente[] = [];
 
@@ -25,7 +24,11 @@ export class ClienteListComponent implements OnInit{
     this.clientesService.listarClientes().subscribe(res => {
       this.clientes = res;
       if(this.clientes.length < this.exibirLista) this.exibirLista = this.clientes.length;
+      else this.exibirLista = 5;
+    }, error => {
+      this.exibirLista = 0;
     });
+
   }
 
   onClienteSelected(cliente: Cliente) {
