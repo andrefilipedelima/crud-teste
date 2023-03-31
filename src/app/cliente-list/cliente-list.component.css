@@ -1,0 +1,12 @@
+.card {
+  max-width: 60%;
+  margin: auto;
+}
+
+.filtro {
+  max-width: 60%;
+  margin: auto;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 5px;
+}

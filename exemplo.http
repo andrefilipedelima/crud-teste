@@ -1,0 +1,16 @@
+  http://localhost:3000/cliente
+
+  GET http://localhost:3000/cliente/
+
+
+  POST http://localhost:3000/cliente HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Fulano fulano",
+    "cpf": "79990832080",
+    "email": "fulano@mail.com",
+    "dataCadastro": "2017-09-02",
+    "rendaMensal": 8766.33,
+    "dataNascimento": "1977-08-30"
+}

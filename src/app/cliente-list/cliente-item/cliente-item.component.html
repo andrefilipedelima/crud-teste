@@ -1,0 +1,25 @@
+<div class="list-group-item clearfix">
+  <div class="conteudo">
+    <div class="texto" (click)="onSelected(cliente)">
+      <div class="pull-left titulo">
+        <p>Nome</p>
+        <p>CPF</p>
+        <p>Data Cadastro</p>
+        <p>Renda Mensal</p>
+      </div>
+      <div class="pull-right">
+        <p>{{ cliente.nome | titlecase }}</p>
+        <p>{{ cliente.cpf | cpf }}</p>
+        <p>{{ cliente.dataCadastro | date: 'dd/MM/yyyy' }}</p>
+        <p>{{ cliente.rendaMensal | currency: 'BRL' }}</p>
+      </div>
+    </div>
+    <div class="delete" (click)="onDeleted(cliente.id)">
+      <i-bs name="trash"
+              width="20"
+              height="20">
+      </i-bs>
+      <p>Excluir cliente</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<form [formGroup]="formCliente"  (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input formControlName="nome" type="text" class="form-control" maxlength="50" style="text-transform:uppercase">
+    <div *ngIf="formCliente.get('nome')?.invalid &&
+                formCliente.get('nome')?.errors &&
+                (formCliente.get('nome')?.dirty || formCliente.get('nome')?.touched)">
+      <small class="text-danger"
+          *ngIf="formCliente.get('nome')?.hasError('required')">
+          Preenchimento obrigatório.
+      </small>
+      <small class="text-danger"
+          *ngIf="formCliente.get('nome')?.hasError('nomeCompleto')">
+          Preencher com nome e sobrenome
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cpf">CPF</label>
+    <input formControlName="cpf" type="text" class="form-control" name="cpf" id="cpf" maxlength="14" [imask]="mask">
+    <div *ngIf="formCliente.get('cpf')?.invalid &&
+                formCliente.get('cpf')?.errors &&
+                (formCliente.get('cpf')?.dirty || formCliente.get('cpf')?.touched)">
+      <small class="text-danger"
+          *ngIf="formCliente.get('cpf')?.hasError('required')">
+          Preenchimento obrigatório.
+      </small>
+      <small class="text-danger"
+          *ngIf="formCliente.get('cpf')?.hasError('cpfInvalido')">
+          CPF inválido.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input formControlName="email" type="text" class="form-control" name="email" id="email"  maxlength="50" style="text-transform:lowercase">
+    <div *ngIf="formCliente.get('email')?.invalid &&
+                formCliente.get('email')?.errors &&
+                (formCliente.get('email')?.dirty || formCliente.get('email')?.touched)">
+      <small class="text-danger"
+          *ngIf="formCliente.get('email')?.hasError('required')">
+          Preenchimento obrigatório.
+      </small>
+      <small class="text-danger"
+          *ngIf="formCliente.get('email')?.hasError('email')">
+          E-mail com formato inválido.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataNascimento">Data de nascimento</label>
+    <input formControlName="dataNascimento"  type="date" class="form-control" name="dataNascimento" id="dataNascimento"  maxlength="8">
+    <div *ngIf="formCliente.get('dataNascimento')?.invalid &&
+                formCliente.get('dataNascimento')?.errors &&
+                (formCliente.get('dataNascimento')?.dirty || formCliente.get('dataNascimento')?.touched)">
+      <small class="text-danger"
+          *ngIf="formCliente.get('dataNascimento')?.hasError('required')">
+          Preenchimento obrigatório.
+      </small>
+      <small class="text-danger"
+      *ngIf="formCliente.get('dataNascimento')?.hasError('idadePermitida')">
+        Idade entre 18 anos e 60 anos.
+  </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="rendaMensal">Renda Mensal</label>
+    <input formControlName="rendaMensal" type="text" class="form-control" name="rendaMensal" id="redaMensal" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"  maxlength="12">
+    <div *ngIf="formCliente.get('rendaMensal')?.invalid &&
+                formCliente.get('rendaMensal')?.errors &&
+                (formCliente.get('rendaMensal')?.dirty || formCliente.get('rendaMensal')?.touched)">
+      <small class="text-danger"
+          *ngIf="formCliente.get('rendaMensal')?.hasError('required')">
+          Preenchimento obrigatório.
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataCadastro">Data cadastro</label>
+    <input formControlName="dataCadastro" type="date" class="form-control" name="dataCadastro" id="dataCadastro"  maxlength="8">
+    <div *ngIf="formCliente.get('dataCadastro')?.invalid &&
+                formCliente.get('dataCadastro')?.errors &&
+                (formCliente.get('dataCadastro')?.dirty || formCliente.get('dataCadastro')?.touched)">
+      <small class="text-danger"
+          *ngIf="formCliente.get('dataCadastro')?.hasError('required')">
+          Preenchimento obrigatório.
+      </small>
+    </div>
+  </div>
+
+  <input type="submit" class="btn btn-primary mt-4" value="Salvar" [disabled]="!formCliente.valid && checkForm()">
+  <a href="/lista-cliente" class="btn btn-secondary mt-4 ml-2">Cancelar</a>
+
+
+
+</form>

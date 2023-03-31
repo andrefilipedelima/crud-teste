@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="filtro">
+      <input
+        placeholder="procure por Nome, CPF ou Data Cadastro"
+        type="text"
+        id="filtro"
+        class="form-control"
+        [(ngModel)]="filtro"
+      />
+
+    <div class="btn-group"
+      appDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle">
+        {{ (ordenacao || 'Ordenar por') }}<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a  (click)="setOrder('Nome')">Nome</a></li>
+        <li><a  (click)="setOrder('Data Cadastro')">Data Cadastro</a></li>
+        <li><a  (click)="setOrder('Renda Mensal')">Renda Mensal</a></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+<p>Visualizando {{exibirLista}} / {{clientes.length}} clientes cadastrados</p>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="card">
+      <div *ngFor="let cliente of (clientes | filtro:{filtro, ordenacao}); let i = index">
+        <app-cliente-item
+          *ngIf="i < exibirLista"
+          [cliente]="cliente"
+          (clienteSelected)="onClienteSelected(cliente)"
+          (clienteDeleted)="onClienteDeleted(cliente.id)">
+      </app-cliente-item>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <button
+    [disabled]="exibirLista >= clientes.length"
+    class="btn btn-primary button"
+    type="submit"
+    (click)="mostrarMais(2)"
+    >Mostrar mais</button>
+</div>
