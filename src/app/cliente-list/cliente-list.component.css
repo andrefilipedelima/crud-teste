@@ -10,3 +10,18 @@
   display: flex;
   gap: 5px;
 }
+
+.texto-quantidade-lista {
+  text-align: center;
+}
+
+.botao-mostrar-mais {
+  margin: auto;
+    width: 11%;
+    display: grid;
+}
+
+.mostrar-mais {
+  background: darkturquoise;
+  color: white;
+}

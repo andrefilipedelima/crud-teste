@@ -1,6 +1,6 @@
-<div class="list-group-item clearfix">
+<div class="list-group-item clearfix card">
   <div class="conteudo">
-    <div class="texto" (click)="onSelected(cliente)">
+    <div class="texto" >
       <div class="pull-left titulo">
         <p>Nome</p>
         <p>CPF</p>
@@ -14,12 +14,21 @@
         <p>{{ cliente.rendaMensal | currency: 'BRL' }}</p>
       </div>
     </div>
-    <div class="delete" (click)="onDeleted(cliente.id)">
-      <i-bs name="trash"
-              width="20"
-              height="20">
-      </i-bs>
-      <p>Excluir cliente</p>
+    <div class="delete" >
+      <a href="" (click)="onDeleted(cliente.id)">
+        <i-bs name="trash"
+                width="20"
+                height="20">
+        </i-bs>
+        <p class="texto-excluir">Excluir cliente</p>
+      </a>
     </div>
+  </div>
+  <div>
+    <button
+      class="btn btn-primary botao-atualizar"
+      type="button"
+      (click)="onSelected(cliente)"
+    >Atualizar</button>
   </div>
 </div>

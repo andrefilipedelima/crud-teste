@@ -9,10 +9,25 @@
 
 .delete {
   width: 20%;
-  padding: 27px 0px 12px 20px;
+  padding: 40px 0px 0px 20px;
   text-align: center;
 }
 
 .titulo {
   font-weight: 600;
+}
+
+.card {
+  border-radius: 13px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.texto-excluir:hover {
+  color: crimson;
+}
+
+.botao-atualizar {
+  width: 100%;
 }

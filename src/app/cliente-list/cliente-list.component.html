@@ -23,7 +23,7 @@
     </div>
   </div>
 </div>
-<p>Visualizando {{exibirLista}} / {{clientes.length}} clientes cadastrados</p>
+<p class="texto-quantidade-lista"><strong>Visualizando {{exibirLista}} de {{clientes.length}} clientes cadastrados</strong></p>
 <div class="row">
   <div class="col-xs-12">
     <div class="card">
@@ -33,18 +33,22 @@
           [cliente]="cliente"
           (clienteSelected)="onClienteSelected(cliente)"
           (clienteDeleted)="onClienteDeleted(cliente.id)">
-      </app-cliente-item>
-    </div>
+        </app-cliente-item>
+      </div>
 
     </div>
   </div>
 </div>
 
 <div class="row">
-  <button
-    [disabled]="exibirLista >= clientes.length"
-    class="btn btn-primary button"
-    type="submit"
-    (click)="mostrarMais(2)"
-    >Mostrar mais</button>
+  <div class="col-xs-12">
+    <div class="botao-mostrar-mais">
+      <button
+        [disabled]="exibirLista >= clientes.length"
+        class="btn mostrar-mais"
+        type="submit"
+        (click)="mostrarMais(2)"
+      >+ Mostrar mais</button>
+    </div>
+  </div>
 </div>

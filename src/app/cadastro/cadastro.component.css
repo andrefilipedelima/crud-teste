@@ -7,4 +7,14 @@ label {
   color: royalblue;
 }
 
+.form {
+  margin: auto;
+  width: 35%;
+}
+
+.botao-enviar {
+  margin: auto;
+  width: 20%;
+  display: grid;
+}
 

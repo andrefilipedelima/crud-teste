@@ -5,7 +5,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { ClienteListComponent } from './cliente-list/cliente-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/cadastro', pathMatch: 'full'},
+  { path: '', redirectTo: '/lista-cliente', pathMatch: 'full'},
   { path: 'cadastro', component: CadastroComponent },
   { path: 'lista-cliente', component: ClienteListComponent },
   { path: 'detalhes', component: ClienteDetalhesComponent }
