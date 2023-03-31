@@ -26,6 +26,7 @@ export class ClienteListComponent implements OnInit{
     this.clientesService.listarClientes().subscribe(res => {
       this.clientes = res;
     });
+    if(this.clientes.length < this.exibirLista) this.exibirLista = this.clientes.length;
   }
 
   onClienteSelected(cliente: Cliente) {
