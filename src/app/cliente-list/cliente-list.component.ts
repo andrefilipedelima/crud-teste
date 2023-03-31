@@ -14,7 +14,6 @@ export class ClienteListComponent implements OnInit{
   filtro: string = '';
   ordenacao: string = "Nome";
   exibirLista: number = 5;
-  deleteModalRef: BsModalRef;
 
   clientes: Cliente[] = [];
 
@@ -25,8 +24,8 @@ export class ClienteListComponent implements OnInit{
   ngOnInit() {
     this.clientesService.listarClientes().subscribe(res => {
       this.clientes = res;
+      if(this.clientes.length < this.exibirLista) this.exibirLista = this.clientes.length;
     });
-    if(this.clientes.length < this.exibirLista) this.exibirLista = this.clientes.length;
   }
 
   onClienteSelected(cliente: Cliente) {

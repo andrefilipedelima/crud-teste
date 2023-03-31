@@ -18,10 +18,13 @@
 }
 
 .card {
+  margin-bottom: 10px;
   border-radius: 13px;
-  margin: 10px;
   display: flex;
   flex-direction: column;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .texto-excluir:hover {
