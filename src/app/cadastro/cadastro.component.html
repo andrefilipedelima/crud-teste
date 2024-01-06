@@ -3,7 +3,7 @@
     <div class="form">
       <form [formGroup]="formCadastro"  (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="nome">Nome</label>
+          <label for="nome">Nome Cliente</label>
           <input formControlName="nome" type="text" class="form-control" maxlength="50" style="text-transform:uppercase">
           <div *ngIf="formCadastro.get('nome')?.invalid &&
                       formCadastro.get('nome')?.errors &&

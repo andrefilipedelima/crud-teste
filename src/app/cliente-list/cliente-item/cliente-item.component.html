@@ -1,34 +1,38 @@
-<div class="list-group-item clearfix card">
+<div class="top-bar"></div>
+<div class="card mb-4">
   <div class="conteudo">
-    <div class="texto" >
+    <div class="texto">
       <div class="pull-left titulo">
         <p>Nome</p>
         <p>CPF</p>
         <p>Data Cadastro</p>
-        <p>Renda Mensal</p>
+        <p class="ultimo-item">Renda Mensal</p>
       </div>
       <div class="pull-right">
         <p>{{ cliente.nome | titlecase }}</p>
         <p>{{ cliente.cpf | cpf }}</p>
         <p>{{ cliente.dataCadastro | date: 'dd/MM/yyyy' }}</p>
-        <p>{{ cliente.rendaMensal | currency: 'BRL' }}</p>
+        <p class="ultimo-item">{{ cliente.rendaMensal | currency: 'BRL' }}</p>
       </div>
     </div>
-    <div class="delete" >
-      <a href="" (click)="onDeleted(cliente.id)">
-        <i-bs name="trash"
-                width="20"
-                height="20">
-        </i-bs>
-        <p class="texto-excluir">Excluir cliente</p>
-      </a>
+    <div class="divider"></div>
+    <div class="delete">
+      <div class="delete-texto" (click)="onDeleted(cliente.id)">
+        <a href="">
+          <i-bs name="trash"
+                  width="20"
+                  height="20">
+          </i-bs>
+        </a>
+        <span class="texto-excluir">Excluir cliente</span>
+      </div>
+      <div>
+        <button
+          class="btn botao-atualizar mt-4"
+          type="button"
+          (click)="onSelected(cliente)"
+        >Atualizar</button>
+      </div>
     </div>
-  </div>
-  <div>
-    <button
-      class="btn btn-primary botao-atualizar"
-      type="button"
-      (click)="onSelected(cliente)"
-    >Atualizar</button>
   </div>
 </div>

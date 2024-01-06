@@ -13,8 +13,7 @@ import { ClientesService } from '../cliente-list/clientes.service';
 })
 export class CadastroComponent implements OnInit {
 
-
-  formCadastro: FormGroup;
+  formCadastro!: FormGroup;
   cliente: Cliente = new Cliente(0, "", "", "", new Date(), new Date("2005-01-01"), 0);
   dataNascimento: string;
   dataCadastro: string;

@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { 
+    height: 100%;
+    font-family: var(--font-safra);
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    /* fonts */
+    --font-safra: Montserrat, sans-serif;
+
+    /* colors */
+    /* primary */
+    --color-brand-primary-darkest: #002C37;
+    --color-brand-primary-dark: #0A4A5B;
+    --color-brand-primary-medium: #00586F;
+    --color-brand-primary-light: #11728B;
+    --color-brand-primary-lightest: #7FABB7;
+    --color-private-banking-neutral-light: #D8D8D8;
+    --color-financeira-institucional-neutral-ligthest: #EDEDED;
+    --color-financeira-institucional-neutral-medium: #9E9E9E;
+
+    /* support */
+    --color-support-02-darkest: #7A6019;
+    --color-support-02-dark: #C49A28;
+    --color-support-02-medium: #F5C132;
+    --color-support-02-light: #F8D36F;
+    --color-support-02-lightest: #FBE6AD;
+
+}

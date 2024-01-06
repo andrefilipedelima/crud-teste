@@ -1,54 +1,65 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="filtro">
-      <input
-        placeholder="procure por Nome, CPF ou Data Cadastro"
-        type="text"
-        id="filtro"
-        class="form-control"
-        [(ngModel)]="filtro"
-      />
-
-    <div class="btn-group"
-      appDropdown>
-      <button type="button" class="btn btn-primary dropdown-toggle">
-        {{ (ordenacao || 'Ordenar por') }}<span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a  (click)="setOrder('Nome')">Nome</a></li>
-        <li><a  (click)="setOrder('Data Cadastro')">Data Cadastro</a></li>
-        <li><a  (click)="setOrder('Renda Mensal')">Renda Mensal</a></li>
-      </ul>
-    </div>
-    </div>
-  </div>
-</div>
-<p class="texto-quantidade-lista"><strong>Visualizando {{exibirLista}} de {{clientes.length}} clientes cadastrados</strong></p>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="card">
-      <div *ngFor="let cliente of (clientes | filtro:{filtro, ordenacao}); let i = index">
-        <app-cliente-item
-          *ngIf="i < exibirLista"
-          [cliente]="cliente"
-          (clienteSelected)="onClienteSelected(cliente)"
-          (clienteDeleted)="onClienteDeleted(cliente.id)">
-        </app-cliente-item>
+<div class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="filtro mt-5">
+        <div class="input-group buscar">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">
+              <img src="../../assets/imagens/search.svg">
+            </span>
+          </div>
+          <input
+            placeholder="procure por Nome, CPF ou Data Cadastro"
+            type="text"
+            id="filtro"
+            class="form-control"
+            [(ngModel)]="filtro"
+          />
+        </div>
+        
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-order" [ngClass]="nome ? 'active' : ''">
+            <input type="radio" name="options" id="option1" autocomplete="off" (click)="setOrder('Nome')"> Nome
+          </label>
+          <label class="btn btn-order" [ngClass]="dataCadastro ? 'active' : ''">
+            <input type="radio" name="options" id="option2" autocomplete="off" (click)="setOrder('Data Cadastro')"> Data Cadastro
+          </label>
+          <label class="btn btn-order" [ngClass]="rendaMensal ? 'active' : ''">
+            <input type="radio" name="options" id="option3" autocomplete="off" (click)="setOrder('Renda Mensal')"> Renda Mensal
+          </label>
+        </div>
       </div>
-
+    </div>
+  </div>
+  <p class="texto-quantidade-lista" *ngIf="filtro === ''">Visualizando {{exibirLista}} de {{clientes.length}} clientes cadastrados</p>
+  <p class="texto-quantidade-lista" *ngIf="filtro !== ''">
+    <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length < 1">Não há clientes com esse filtro</span>
+    <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length === 1">Foi encontrado 1 cliente</span>
+    <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length > 1">Foram encontrados {{ (clientes | filtro:{filtro, ordenacao}).length }} clientes</span>
+  </p>
+  <div class="row">
+    <div class="col-xs-12">
+        <div *ngFor="let cliente of (clientes | filtro:{filtro, ordenacao}); let i = index">
+          <app-cliente-item
+            *ngIf="i < exibirLista"
+            [cliente]="cliente"
+            (clienteSelected)="onClienteSelected(cliente)"
+            (clienteDeleted)="onClienteDeleted(cliente.id)">
+          </app-cliente-item>
+        </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="botao-mostrar-mais" *ngIf="exibirLista < (clientes | filtro:{filtro, ordenacao}).length">
+        <button
+          class="btn mostrar-mais"
+          type="submit"
+          (click)="mostrarMais(2)"
+        >+ Mostrar mais</button>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="botao-mostrar-mais">
-      <button
-        [disabled]="exibirLista >= clientes.length"
-        class="btn mostrar-mais"
-        type="submit"
-        (click)="mostrarMais(2)"
-      >+ Mostrar mais</button>
-    </div>
-  </div>
-</div>

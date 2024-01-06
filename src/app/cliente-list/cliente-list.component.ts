@@ -12,7 +12,10 @@ export class ClienteListComponent implements OnInit{
 
   filtro: string = '';
   ordenacao: string = "Nome";
-  exibirLista: number;
+  exibirLista!: number;
+  nome: boolean = true;
+  dataCadastro: boolean = false;
+  rendaMensal: boolean = false;
 
   clientes: Cliente[] = [];
 
@@ -52,12 +55,38 @@ export class ClienteListComponent implements OnInit{
   }
 
   setOrder(ordem: string) {
-    this.ordenacao = ordem;
+
+    switch(ordem) {
+      case 'Nome': {
+        this.nome = true;
+        this.dataCadastro = false;
+        this.rendaMensal = false;
+        this.ordenacao = ordem;
+        break;
+      }
+      case 'Data Cadastro': {
+        this.nome = false;
+        this.dataCadastro = true;
+        this.rendaMensal = false;
+        this.ordenacao = ordem;
+        break;
+      }
+      case 'Renda Mensal': {
+        this.nome = false;
+        this.dataCadastro = false;
+        this.rendaMensal = true;
+        this.ordenacao = ordem;
+        break;
+      }
+      default:
+        break;
+    }
   }
 
   mostrarMais(quantidade: number) {
     this.exibirLista += quantidade;
     if(this.exibirLista > this.clientes.length) this.exibirLista = this.clientes.length;
   }
+
 
 }

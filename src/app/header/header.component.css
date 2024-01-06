@@ -1,7 +1,27 @@
 .header {
-  background: cornflowerblue;
+  background: var(--color-brand-primary-medium);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  border-radius: 0px 0px 30px 30px;
 }
 
 .item {
   color: white !important;
+  padding-left: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+.active {
+  opacity: .5;
+  cursor: default;
+}
+
+.logo-safra-financeira {
+  height: 40px;
 }
