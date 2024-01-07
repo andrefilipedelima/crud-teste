@@ -12,26 +12,38 @@
         <p>{{ cliente.nome | titlecase }}</p>
         <p>{{ cliente.cpf | cpf }}</p>
         <p>{{ cliente.dataCadastro | date: 'dd/MM/yyyy' }}</p>
-        <p class="ultimo-item">{{ cliente.rendaMensal | currency: 'BRL' }}</p>
+        <p class="ultimo-item">{{ cliente.rendaMensal | currency:'BRL' }}</p>
       </div>
     </div>
-    <div class="divider"></div>
+    <div class="divider-v"></div>
     <div class="delete">
-      <div class="delete-texto" (click)="onDeleted(cliente.id)">
-        <a href="">
+      <div>
+        <button
+          class="btn botao-excluir mt-4"
+          type="button"
+          (click)="onDeleted(cliente.id)"
+        >
           <i-bs name="trash"
-                  width="20"
-                  height="20">
+              width="20"
+              height="20"
+              class="color-primary-medium icon-bs">
           </i-bs>
-        </a>
-        <span class="texto-excluir">Excluir cliente</span>
+          Excluir cliente
+        </button>
       </div>
+      <div class="divider-h mt-3"></div>
       <div>
         <button
           class="btn botao-atualizar mt-4"
           type="button"
           (click)="onSelected(cliente)"
-        >Atualizar</button>
+        >
+          <i-bs name="pencil-square"
+              width="16"
+              height="16"
+              class="color-white icon-bs">
+          </i-bs>
+          Atualizar</button>
       </div>
     </div>
   </div>

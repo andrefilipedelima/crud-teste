@@ -67,8 +67,13 @@ export class Validacoes {
   static nomeCompleto(controle: AbstractControl) {
     const nome = controle.value;
 
-    if(/^\S+$/.test(nome)) return { nomeCompleto: true }
+    if(/^([a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]{2,}|[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]{2,}|[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]{2,}|[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]+\s{1}[a-záàâãéèêíïóôõöúçA-ZÁÀÂÃÉÈÍÏÓÔÕÖÚÇ0-9]{2,})$/.test(nome)) return null;
 
-    return null;
+    return { nomeCompleto: true };
+  }
+
+  static maiorQueZero(controle: AbstractControl) {
+    if(controle.value > 0) return null;
+    return {rendaInvalida: true};
   }
 }

@@ -2,7 +2,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { CpfPipe } from './shared/cpf.pipe';
 import { FiltroPipe } from './shared/filtro.pipe';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,6 +16,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { IMaskModule } from 'angular-imask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { HttpClientModule } from '@angular/common/http';
     CurrencyMaskModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

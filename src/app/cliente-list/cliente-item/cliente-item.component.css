@@ -9,9 +9,22 @@
 .conteudo {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 6px 12px 12px 12px;
+}
+
+.color-primary-medium {
+  color: var(--color-brand-primary-medium);
+}
+
+.color-white {
+  color: white;
+}
+
+.icon-bs {
+  top: 2px;
+  position: relative;
 }
 
 .texto {
@@ -24,18 +37,32 @@
   justify-content: center;
   align-items: center;
   width: 19%;
+  top: -5px;
+  position: relative;
 }
 
-.delete-texto {
+.botao-excluir {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background: var(--color-support-02-medium);
+  color: var(--color-brand-primary-medium);
+  border-radius: 15px;
+  width: 120px;
+  font-weight: 600;
 }
 
-.divider {
-    border-left: 1px solid rgba(0,0,0,.125);
-    height: 100px;
+.divider-v {
+  border-left: 1px solid rgba(0,0,0,.125);
+  height: 100px;
+}
+
+.divider-h {
+  border-bottom: 1px solid rgba(0,0,0,.125);
+  width: 150px;
 }
 
 .titulo {
@@ -65,9 +92,13 @@
   cursor: pointer;
 }
 
-
-
 .botao-atualizar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 6px;
   width: 120px;
   border-radius: 15px;
   color: white;

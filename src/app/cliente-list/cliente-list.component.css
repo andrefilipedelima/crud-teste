@@ -37,7 +37,6 @@
 }
 
 .texto-quantidade-lista {
-  margin-left: 182px;
   font-size: 10px;
 }
 
@@ -46,12 +45,42 @@
 }
 
 .botao-mostrar-mais {
-  margin: auto;
-  width: 11%;
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: -50px;
 }
 
 .mostrar-mais {
-  background: darkturquoise;
-  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px;
+  width: 120px;
+  border-radius: 15px;
+  color: var(--color-brand-primary-darkest);
+  background: var(--color-support-03-medium);
+  font-weight: 600;
+}
+
+.color-primary-darkest {
+  color: var(--color-brand-primary-darkest);
+}
+
+.icon-bs {
+  top: 2px;
+  position: relative;
+}
+
+.last-child{
+    margin-bottom: 70px;
+}
+
+.lista-info {
+  width: 70%;
+  margin: auto;
 }

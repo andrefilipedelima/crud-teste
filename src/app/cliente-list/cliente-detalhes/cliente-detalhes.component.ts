@@ -12,7 +12,7 @@ import { ClientesService } from '../clientes.service';
   styleUrls: ['./cliente-detalhes.component.css']
 })
 export class ClienteDetalhesComponent implements OnInit {
-  formCliente: FormGroup;
+  formCliente!: FormGroup;
   cliente: Cliente;
   dataNascimento: string;
   dataCadastro: string;
@@ -37,7 +37,7 @@ export class ClienteDetalhesComponent implements OnInit {
   }
 
   onSubmit() {
-    let cliente = {
+    let clienteAtualizado = {
       id: this.formCliente.value.id,
       nome: this.formCliente.value.nome,
       cpf: this.cliente.cpf,
@@ -47,14 +47,20 @@ export class ClienteDetalhesComponent implements OnInit {
       dataCadastro: this.formCliente.value.dataCadastro
     };
 
-   this.clientesService.updateCliente(this.formCliente.value).subscribe({
+    this.clientesService.updateCliente(clienteAtualizado).subscribe({
       next: () => {
-        window.alert("Cliente alterado com sucesso!")
+        window.alert("Cliente alterado com sucesso!");
+        this.voltar();
       },
       error: () => {
-        window.alert("ERRO!! Não foi possível alterar o cliente, tente novamente mais tarde!")      }
+        window.alert("ERRO!! Não foi possível alterar o cliente, tente novamente mais tarde!");
+      }
     })
 
+  }
+
+  voltar() {
+    this.router.navigate(['/lista-cliente']);
   }
 
   createForm(cliente: Cliente) {
@@ -64,22 +70,9 @@ export class ClienteDetalhesComponent implements OnInit {
       cpf: new FormControl(cliente.cpf, [Validators.required, Validators.minLength(14), Validacoes.ValidaCpf]),
       email: new FormControl(cliente.email, [Validators.required, Validators.email, Validators.pattern("[^ @]*@[^ @]*")]),
       dataNascimento: new FormControl(cliente.dataNascimento, [Validators.required, Validacoes.maiorQue18AnosMenoQue60Anos]),
-      rendaMensal: new FormControl(cliente.rendaMensal, [Validators.required]),
+      rendaMensal: new FormControl(cliente.rendaMensal, [Validators.required, Validacoes.maiorQueZero]),
       dataCadastro: new FormControl(cliente.dataCadastro, [Validators.required])
     })
   }
 
-  checkForm() {
-    const invalid = [];
-    const controls = this.formCliente.controls;
-    for (const name in controls) {
-        if (controls[name].invalid) {
-            invalid.push(name);
-        }
-    }
-    if(invalid[0] === 'dataNascimento' && invalid[1] === 'dataCadastro') {
-      return false;
-    }
-    else return true;
-}
 }

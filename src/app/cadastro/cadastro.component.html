@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
-    <div class="form">
-      <form [formGroup]="formCadastro"  (ngSubmit)="onSubmit()">
+    <div class="form mt-5">
+      <form [formGroup]="formCadastro" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="nome">Nome Cliente</label>
           <input formControlName="nome" type="text" class="form-control" maxlength="50" style="text-transform:uppercase">
@@ -55,7 +55,7 @@
 
         <div class="form-group">
           <label for="dataNascimento">Data de nascimento</label>
-          <input formControlName="dataNascimento" [value]="dataNascimento" type="date" class="form-control" name="dataNascimento" id="dataNascimento"  maxlength="8">
+          <input formControlName="dataNascimento" [value]="dataNascimento" type="date" class="form-control" name="dataNascimento" id="dataNascimento"  maxlength="10">
           <div *ngIf="formCadastro.get('dataNascimento')?.invalid &&
                       formCadastro.get('dataNascimento')?.errors &&
                       (formCadastro.get('dataNascimento')?.dirty || formCadastro.get('dataNascimento')?.touched)">
@@ -66,7 +66,7 @@
             <small class="text-danger"
             *ngIf="formCadastro.get('dataNascimento')?.hasError('idadePermitida')">
               Idade entre 18 anos e 60 anos.
-        </small>
+            </small>
           </div>
         </div>
 
@@ -81,11 +81,15 @@
                 Preenchimento obrigatório.
             </small>
           </div>
+          <small class="text-danger"
+              *ngIf="(formCadastro.get('rendaMensal')?.hasError('rendaInvalida') || formCadastro.get('rendaMensal')?.untouched)">
+              A Renda Mensal deve ser maior que R$0,00.
+            </small>
         </div>
 
         <div class="form-group">
           <label for="dataCadastro">Data cadastro</label>
-          <input formControlName="dataCadastro" [value]="dataCadastro" type="date" class="form-control" name="dataCadastro" id="dataCadastro"  maxlength="8" >
+          <input formControlName="dataCadastro" [value]="dataCadastro" type="date" class="form-control" name="dataCadastro" id="dataCadastro"  maxlength="10" >
           <div *ngIf="formCadastro.get('dataCadastro')?.invalid &&
                       formCadastro.get('dataCadastro')?.errors &&
                       (formCadastro.get('dataCadastro')?.dirty || formCadastro.get('dataCadastro')?.touched)">
@@ -95,8 +99,9 @@
             </small>
           </div>
         </div>
-        <div class="botao-enviar">
-          <input type="submit" class="btn btn-primary mt-4" value="Enviar" [disabled]="!formCadastro.valid && checkForm()">
+        <div class="bloco-botoes">
+          <button type="submit" class="btn botao-enviar mt-4" [disabled]="!formCadastro.valid">Enviar</button>
+          <button type="button" class="btn botao-limpar mt-4 ml-3" (click)="limpar()">Limpar</button>
         </div>
       </form>
     </div>

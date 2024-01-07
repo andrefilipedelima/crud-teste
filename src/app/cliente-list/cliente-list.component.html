@@ -31,15 +31,17 @@
       </div>
     </div>
   </div>
-  <p class="texto-quantidade-lista" *ngIf="filtro === ''">Visualizando {{exibirLista}} de {{clientes.length}} clientes cadastrados</p>
-  <p class="texto-quantidade-lista" *ngIf="filtro !== ''">
-    <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length < 1">Não há clientes com esse filtro</span>
-    <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length === 1">Foi encontrado 1 cliente</span>
-    <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length > 1">Foram encontrados {{ (clientes | filtro:{filtro, ordenacao}).length }} clientes</span>
-  </p>
+  <div class="lista-info">
+    <p class="texto-quantidade-lista" *ngIf="filtro === ''">Visualizando {{exibirLista}} de {{clientes.length}} clientes cadastrados</p>
+    <p class="texto-quantidade-lista" *ngIf="filtro !== ''">
+      <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length < 1">Não há clientes com esse filtro</span>
+      <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length === 1">Foi encontrado 1 cliente</span>
+      <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length > 1">Foram encontrados {{ (clientes | filtro:{filtro, ordenacao}).length }} clientes</span>
+    </p>
+  </div>
   <div class="row">
     <div class="col-xs-12">
-        <div *ngFor="let cliente of (clientes | filtro:{filtro, ordenacao}); let i = index">
+        <div *ngFor="let cliente of (clientes | filtro:{filtro, ordenacao}); let i = index; let last = last" [ngClass]="{'last-child': last}">
           <app-cliente-item
             *ngIf="i < exibirLista"
             [cliente]="cliente"
@@ -57,7 +59,13 @@
           class="btn mostrar-mais"
           type="submit"
           (click)="mostrarMais(2)"
-        >+ Mostrar mais</button>
+        >
+        <i-bs name="plus-square"
+              width="16"
+              height="16"
+              class="color-primary-darkest icon-bs">
+          </i-bs>
+        Mostrar mais</button>
       </div>
     </div>
   </div>

@@ -2,13 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
 
+Run `npm i` for install packages
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Executar o comando `npm install -g json-server` no terminal, após a instalação
+Run `npm install -g json-server` to install json-server
 
-Iniciar o `json-server --watch db.json` para o serviço de json-server simular os endpoints
+Run to start `json-server --watch db.json` for mock
 
 ## Code scaffolding
 

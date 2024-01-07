@@ -2,19 +2,43 @@
   text-align: left !important;
 }
 
-
-label {
-  color: royalblue;
-}
-
 .form {
   margin: auto;
   width: 35%;
+  color: var(--color-brand-primary-medium);
+}
+
+.bloco-botoes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .botao-enviar {
-  margin: auto;
-  width: 20%;
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background: var(--color-brand-primary-medium);
+  color: white;
+  border-radius: 15px;
+  width: 120px;
+}
+
+.botao-limpar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background: var(--color-support-02-medium);
+  color: var(--color-brand-primary-medium);
+  border-radius: 15px;
+  width: 120px;
+  font-weight: 600;
 }
 

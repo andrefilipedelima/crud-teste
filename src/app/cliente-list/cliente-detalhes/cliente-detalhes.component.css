@@ -5,8 +5,39 @@
 .form {
   margin: auto;
   width: 35%;
+  color: var(--color-brand-primary-medium);
+}
+
+.bloco-botoes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .botao-salvar {
-  float: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background:  var(--color-brand-primary-medium);
+  color: white;
+  border-radius: 15px;
+  width: 120px;
+}
+
+.botao-cancelar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background: var(--color-support-02-medium);
+  color: var(--color-brand-primary-medium);
+  border-radius: 15px;
+  width: 120px;
+  font-weight: 600;
 }

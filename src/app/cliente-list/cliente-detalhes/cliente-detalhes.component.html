@@ -1,6 +1,6 @@
 <div class="rom">
   <div class="col-xs-12">
-    <div class="form">
+    <div class="form mt-5">
       <form [formGroup]="formCliente"  (ngSubmit)="onSubmit()">
 
         <div class="form-group">
@@ -56,7 +56,7 @@
 
         <div class="form-group">
           <label for="dataNascimento">Data de nascimento</label>
-          <input formControlName="dataNascimento"  type="date" class="form-control" name="dataNascimento" id="dataNascimento"  maxlength="8">
+          <input formControlName="dataNascimento"  type="date" class="form-control" name="dataNascimento" id="dataNascimento"  maxlength="10">
           <div *ngIf="formCliente.get('dataNascimento')?.invalid &&
                       formCliente.get('dataNascimento')?.errors &&
                       (formCliente.get('dataNascimento')?.dirty || formCliente.get('dataNascimento')?.touched)">
@@ -82,11 +82,15 @@
                 Preenchimento obrigatório.
             </small>
           </div>
+          <small class="text-danger"
+              *ngIf="formCliente.get('rendaMensal')?.hasError('rendaInvalida')">
+              A Renda Mensal deve ser maior que R$0,00.
+            </small>
         </div>
 
         <div class="form-group">
           <label for="dataCadastro">Data cadastro</label>
-          <input formControlName="dataCadastro" type="date" class="form-control" name="dataCadastro" id="dataCadastro"  maxlength="8">
+          <input formControlName="dataCadastro" type="date" class="form-control" name="dataCadastro" id="dataCadastro"  maxlength="10">
           <div *ngIf="formCliente.get('dataCadastro')?.invalid &&
                       formCliente.get('dataCadastro')?.errors &&
                       (formCliente.get('dataCadastro')?.dirty || formCliente.get('dataCadastro')?.touched)">
@@ -96,9 +100,9 @@
             </small>
           </div>
         </div>
-        <div class="botao-salvar">
-          <input type="submit" class="btn btn-primary mt-4" value="Salvar" [disabled]="!formCliente.valid && checkForm()">
-          <a href="/lista-cliente" class="btn btn-secondary mt-4 ml-2">Cancelar</a>
+        <div class="bloco-botoes">
+          <button type="submit" class="btn botao-salvar mt-4" [disabled]="!formCliente.valid">Salvar</button>
+          <button type="button" class="btn botao-cancelar mt-4 ml-3" (click)="voltar()">Voltar</button>
         </div>
       </form>
     </div>

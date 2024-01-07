@@ -64,23 +64,18 @@ export class CadastroComponent implements OnInit {
       cpf: new FormControl(cliente.cpf, [Validators.required, Validators.minLength(11), Validacoes.ValidaCpf]),
       email: new FormControl(cliente.email, [Validators.required, Validators.email, Validators.pattern("[^ @]*@[^ @]*")]),
       dataNascimento: new FormControl(this.dataNascimento, [Validators.required, Validacoes.maiorQue18AnosMenoQue60Anos]),
-      rendaMensal: new FormControl(cliente.rendaMensal, [Validators.required]),
+      rendaMensal: new FormControl(cliente.rendaMensal, [Validators.required, Validacoes.maiorQueZero]),
       dataCadastro: new FormControl(this.dataCadastro, [Validators.required])
     })
   }
 
-  checkForm() {
-      const invalid = [];
-      const controls = this.formCadastro.controls;
-      for (const name in controls) {
-          if (controls[name].invalid) {
-              invalid.push(name);
-          }
-      }
-      if(invalid[0] === 'dataNascimento' && invalid[1] === 'dataCadastro') {
-        return false;
-      }
-      else return true;
+  limpar() {
+    this.formCadastro.controls['nome'].setValue("");
+    this.formCadastro.controls['cpf'].setValue("");
+    this.formCadastro.controls['email'].setValue("");
+    this.formCadastro.controls['email'].setValue(this.dataNascimento);
+    this.formCadastro.controls['rendaMensal'].setValue(0);
+    this.formCadastro.controls['dataCadastro'].setValue(this.dataCadastro); 
   }
 
 }
