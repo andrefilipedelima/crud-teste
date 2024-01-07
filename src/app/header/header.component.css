@@ -26,3 +26,19 @@
 .logo-safra-financeira {
   height: 40px;
 }
+
+@media screen and (max-width: 990px) {
+  .header {
+    flex-direction: column-reverse;
+  }
+  .link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .item {
+    padding: 0;
+  }
+}

@@ -52,3 +52,9 @@
   justify-content: center;
   gap: 25px;
 }
+
+@media screen and (max-width: 990px) {
+  .form {
+    width: 90%;
+  }
+}
