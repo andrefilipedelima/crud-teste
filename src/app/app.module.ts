@@ -18,6 +18,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 registerLocaleData(ptBr);
 
@@ -41,10 +42,12 @@ registerLocaleData(ptBr);
     ReactiveFormsModule,
     IMaskModule,
     CurrencyMaskModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
+    BsModalService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,8 +4,11 @@
 
 .form {
   margin: auto;
-  width: 35%;
+  width: 40%;
+  padding: 23px;
   color: var(--color-brand-primary-medium);
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0px 8px 8px 0px #00000040;
 }
 
 .bloco-botoes {

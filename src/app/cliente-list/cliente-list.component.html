@@ -46,7 +46,7 @@
             *ngIf="i < exibirLista"
             [cliente]="cliente"
             (clienteSelected)="onClienteSelected(cliente)"
-            (clienteDeleted)="onClienteDeleted(cliente.id)">
+            (clienteDeleted)="openModal(templateModalConfirmar, cliente.id)">
           </app-cliente-item>
         </div>
     </div>
@@ -70,4 +70,37 @@
     </div>
   </div>
 </div>
+
+
+<ng-template #templateModalConfirmar>
+  <div class="modal-header">
+     <h4 class="modal-title text-center">{{ tituloModalConfirmar || '-' }}</h4>
+     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">×</span>
+     </button>
+  </div>
+  <div class="modal-body text-center">
+     {{ mensagemModalConfirmar || '-' }}
+  </div>
+  <div class="modal-footer">
+     <button type="button" class="btn botao-confirmar" (click)="onClienteDeleted(templateModalDelete, idClienteSelecionado)">Excluir</button>
+     <button type="button" class="btn botao-cancelar" (click)="modalRef.hide()">Voltar</button>
+  </div>
+</ng-template>
+
+
+<ng-template #templateModalDelete>
+  <div class="modal-header">
+     <h4 class="modal-title text-center">{{ tituloModalDelete || '-' }}</h4>
+     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">×</span>
+     </button>
+  </div>
+  <div class="modal-body text-center">
+     {{ mensagemModalDelete || '-' }}
+  </div>
+  <div class="modal-footer">
+     <button type="button" class="btn botao-confirmar" (click)="modalRef.hide()">Ok</button>
+  </div>
+</ng-template>
 

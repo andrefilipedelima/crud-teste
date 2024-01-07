@@ -1,7 +1,7 @@
 <div class="rom">
   <div class="col-xs-12">
-    <div class="form mt-5">
-      <form [formGroup]="formCliente"  (ngSubmit)="onSubmit()">
+    <div class="form">
+      <form [formGroup]="formCliente"  (ngSubmit)="onSubmit(templateModalAtualizar)">
 
         <div class="form-group">
           <label for="nome">Nome</label>
@@ -109,3 +109,17 @@
   </div>
 </div>
 
+<ng-template #templateModalAtualizar>
+  <div class="modal-header">
+     <h4 class="modal-title text-center">{{ tituloModalAtualizar|| '-' }}</h4>
+     <button type="button" class="close pull-right" aria-label="Close" (click)="voltar()">
+        <span aria-hidden="true">×</span>
+     </button>
+  </div>
+  <div class="modal-body text-center">
+     {{ mensagemModalAtualizar || '-' }}
+  </div>
+  <div class="modal-footer">
+     <button type="button" class="btn botao-salvar" (click)="voltar()">Ok</button>
+  </div>
+</ng-template>

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cliente } from '../shared/cliente.model';
 import { Validacoes } from '../shared/validacoes.service';
 import { ClientesService } from '../cliente-list/clientes.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { ClientesService } from '../cliente-list/clientes.service';
 })
 export class CadastroComponent implements OnInit {
 
+  modalRef!: BsModalRef;
   formCadastro!: FormGroup;
   cliente: Cliente = new Cliente(0, "", "", "", new Date(), new Date("2005-01-01"), 0);
   dataNascimento: string;
@@ -22,9 +24,12 @@ export class CadastroComponent implements OnInit {
     lazy: true
   };
   validar: boolean = false;
+  mensagemModalCadastro: string = "";
+  tituloModalCadastro: string = "";
 
   constructor(private formBuilder: FormBuilder,
-              private clientesService: ClientesService)
+              private clientesService: ClientesService,
+              private modalService: BsModalService)
   {
       let data = this.cliente.dataNascimento.toLocaleString("pt-BR", {dateStyle:"short"});
       this.dataNascimento = data.split("/").reverse().join("-")
@@ -36,7 +41,7 @@ export class CadastroComponent implements OnInit {
     this.createForm(this.cliente);
   }
 
-  onSubmit() {
+  onSubmit(template: TemplateRef<any>) {
     let cliente = {
       nome: this.formCadastro.value.nome,
       cpf: this.formCadastro.value.cpf,
@@ -48,12 +53,15 @@ export class CadastroComponent implements OnInit {
 
     this.clientesService.criarCliente(cliente).subscribe({
       next: () => {
-        window.alert("Cliente adicionado com sucesso!")
+        this.mensagemModalCadastro = 'Cliente adicionado com sucesso!';
+        this.tituloModalCadastro = 'Sucesso';
+        this.openModal(template);
         this.formCadastro.reset();
       },
       error: () => {
-        window.alert("ERRO!! Não foi possível adicionar novo cliente, tente novamente mais tarde!")
-
+        this.mensagemModalCadastro = 'Não foi possível adicionar novo cliente, tente novamente mais tarde!';
+        this.tituloModalCadastro = 'Serviço Indisponível';
+        this.openModal(template);
       }
     })
   }
@@ -73,9 +81,13 @@ export class CadastroComponent implements OnInit {
     this.formCadastro.controls['nome'].setValue("");
     this.formCadastro.controls['cpf'].setValue("");
     this.formCadastro.controls['email'].setValue("");
-    this.formCadastro.controls['email'].setValue(this.dataNascimento);
+    this.formCadastro.controls['dataNascimento'].setValue(this.dataNascimento);
     this.formCadastro.controls['rendaMensal'].setValue(0);
     this.formCadastro.controls['dataCadastro'].setValue(this.dataCadastro); 
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

@@ -65,6 +65,7 @@
   color: var(--color-brand-primary-darkest);
   background: var(--color-support-03-medium);
   font-weight: 600;
+  box-shadow: 0px 8px 8px 0px #00000040;
 }
 
 .color-primary-darkest {
@@ -83,4 +84,31 @@
 .lista-info {
   width: 70%;
   margin: auto;
+}
+
+.botao-confirmar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background: var(--color-brand-primary-medium);
+  color: white;
+  border-radius: 15px;
+  width: 120px;
+}
+
+.botao-cancelar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background: var(--color-support-02-medium);
+  color: var(--color-brand-primary-medium);
+  border-radius: 15px;
+  width: 120px;
+  font-weight: 600;
 }

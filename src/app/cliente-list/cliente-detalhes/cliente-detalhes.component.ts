@@ -1,10 +1,11 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/shared/cliente.model';
 import { Validacoes } from 'src/app/shared/validacoes.service';
 import { ClientesService } from '../clientes.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-cliente-detalhes',
@@ -12,6 +13,8 @@ import { ClientesService } from '../clientes.service';
   styleUrls: ['./cliente-detalhes.component.css']
 })
 export class ClienteDetalhesComponent implements OnInit {
+
+  modalRef!: BsModalRef;
   formCliente!: FormGroup;
   cliente: Cliente;
   dataNascimento: string;
@@ -20,8 +23,15 @@ export class ClienteDetalhesComponent implements OnInit {
     mask: '000.000.000-00',
     lazy: false
   };
+  tituloModalAtualizar: string = "";
+  mensagemModalAtualizar: string = "";
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private clientesService: ClientesService) {
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private clientesService: ClientesService,
+    private modalService: BsModalService
+  ) {
     const nav = this.router.getCurrentNavigation();
     this.cliente = nav?.extras?.state?.['cliente'];
     let data = this.cliente.dataNascimento.toLocaleString("pt-BR", {dateStyle:"short"});
@@ -36,7 +46,7 @@ export class ClienteDetalhesComponent implements OnInit {
     this.formCliente.controls['cpf'].disable();
   }
 
-  onSubmit() {
+  onSubmit(template: TemplateRef<any>) {
     let clienteAtualizado = {
       id: this.formCliente.value.id,
       nome: this.formCliente.value.nome,
@@ -49,17 +59,21 @@ export class ClienteDetalhesComponent implements OnInit {
 
     this.clientesService.updateCliente(clienteAtualizado).subscribe({
       next: () => {
-        window.alert("Cliente alterado com sucesso!");
-        this.voltar();
+        this.mensagemModalAtualizar = 'Cliente alterado com sucesso!';
+        this.tituloModalAtualizar = 'Sucesso';
+        this.openModal(template);
       },
       error: () => {
-        window.alert("ERRO!! Não foi possível alterar o cliente, tente novamente mais tarde!");
+        this.mensagemModalAtualizar = 'Não foi possível atualizar esse cliente, tente novamente mais tarde!';
+        this.tituloModalAtualizar = 'Serviço Indisponível';
+        this.openModal(template);
       }
     })
 
   }
 
   voltar() {
+    this.modalRef.hide();
     this.router.navigate(['/lista-cliente']);
   }
 
@@ -73,6 +87,10 @@ export class ClienteDetalhesComponent implements OnInit {
       rendaMensal: new FormControl(cliente.rendaMensal, [Validators.required, Validacoes.maiorQueZero]),
       dataCadastro: new FormControl(cliente.dataCadastro, [Validators.required])
     })
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

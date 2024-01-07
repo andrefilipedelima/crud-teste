@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from '../shared/cliente.model';
 import { ClientesService } from './clientes.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-cliente-list',
@@ -10,17 +11,25 @@ import { ClientesService } from './clientes.service';
 })
 export class ClienteListComponent implements OnInit{
 
+  modalRef!: BsModalRef;
   filtro: string = '';
   ordenacao: string = "Nome";
   exibirLista!: number;
   nome: boolean = true;
   dataCadastro: boolean = false;
   rendaMensal: boolean = false;
+  mensagemModalConfirmar: string = "Deseja excluir esse cliente?";
+  mensagemModalDelete: string = "";
+  tituloModalConfirmar: string = "Excluir";
+  tituloModalDelete: string = "";
+  idClienteSelecionado: number = 0;
 
   clientes: Cliente[] = [];
 
-  constructor(private router: Router,
-    private clientesService: ClientesService) {
+  constructor(
+    private router: Router,
+    private clientesService: ClientesService,
+    private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -40,16 +49,21 @@ export class ClienteListComponent implements OnInit{
     })
   }
 
-  onClienteDeleted(id: number) {
+  onClienteDeleted(template: TemplateRef<any>, id: number) {
+    this.modalRef.hide();
      this.clientesService.deletarCliente(id).subscribe({
       next: () => {
-        window.alert("Cliente deletado com sucesso!")
+        this.tituloModalDelete = "Sucesso";
+        this.mensagemModalDelete = "Cliente deletado com sucesso!";
+        this.openModal(template);
         this.clientesService.listarClientes().subscribe(res => {
           this.clientes = res;
         });
       },
       error: () => {
-        window.alert("ERRO!! Não foi possível deletar o cliente, tente novamente mais tarde!")
+        this.tituloModalDelete = "Serviço Indisponível";
+        this.mensagemModalDelete = "Não foi possível deletar o cliente, tente novamente mais tarde!";
+        this.openModal(template);
       }
     })
   }
@@ -86,6 +100,13 @@ export class ClienteListComponent implements OnInit{
   mostrarMais(quantidade: number) {
     this.exibirLista += quantidade;
     if(this.exibirLista > this.clientes.length) this.exibirLista = this.clientes.length;
+  }
+
+  openModal(template: TemplateRef<any>, id?: number) {
+    if(id) {
+      this.idClienteSelecionado = id;
+    }
+    this.modalRef = this.modalService.show(template);
   }
 
 
