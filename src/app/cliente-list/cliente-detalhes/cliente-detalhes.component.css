@@ -44,3 +44,11 @@
   width: 120px;
   font-weight: 600;
 }
+
+.conteudo-modal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}

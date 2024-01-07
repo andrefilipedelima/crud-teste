@@ -25,6 +25,7 @@ export class ClienteDetalhesComponent implements OnInit {
   };
   tituloModalAtualizar: string = "";
   mensagemModalAtualizar: string = "";
+  iconModalAtualizar: string = "";
 
   constructor(
     private router: Router,
@@ -61,15 +62,21 @@ export class ClienteDetalhesComponent implements OnInit {
       next: () => {
         this.mensagemModalAtualizar = 'Cliente alterado com sucesso!';
         this.tituloModalAtualizar = 'Sucesso';
+        this.iconModalAtualizar = 'success-icon';
         this.openModal(template);
       },
       error: () => {
         this.mensagemModalAtualizar = 'Não foi possível atualizar esse cliente, tente novamente mais tarde!';
         this.tituloModalAtualizar = 'Serviço Indisponível';
+        this.iconModalAtualizar = 'error-icon';
         this.openModal(template);
       }
     })
 
+  }
+
+  voltarFormulario() {
+    this.router.navigate(['/lista-cliente']);
   }
 
   voltar() {

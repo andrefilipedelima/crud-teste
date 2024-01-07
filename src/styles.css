@@ -18,6 +18,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --color-brand-primary-light: #11728B;
     --color-brand-primary-lightest: #7FABB7;
     --color-private-banking-neutral-light: #D8D8D8;
+    --color-financeira-institucional-neutral-dark: #4F4F4F;
+    --color-financeira-institucional-neutral-ligth: #D8D8D8;
     --color-financeira-institucional-neutral-ligthest: #EDEDED;
     --color-financeira-institucional-neutral-medium: #9E9E9E;
 

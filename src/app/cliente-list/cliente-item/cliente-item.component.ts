@@ -8,9 +8,14 @@ import { Cliente } from 'src/app/shared/cliente.model';
   styleUrls: ['./cliente-item.component.css']
 })
 export class ClienteItemComponent {
-  @Input() cliente: Cliente;
+  @Input() cliente!: Cliente;
   @Output() clienteSelected = new EventEmitter<Cliente>();
   @Output() clienteDeleted = new EventEmitter<number>();
+  sigla!: string;
+
+  ngOnInit() {
+    this.sigla = this.cliente.nome.split(' ').map(word => word.charAt(0)).join('').toLocaleUpperCase().substring(0,2);
+  }
 
   onSelected(cliente: Cliente) {
     this.clienteSelected.emit(cliente);

@@ -1,18 +1,25 @@
-<div class="top-bar"></div>
+<div class="top-bar">
+  <div class="bloco- ml-3 mr-4">
+    <div class="border-circle">
+      <div class="circle">
+        <div class="texto-sigla">{{ (sigla | uppercase) || '-' }}</div>
+      </div>
+    </div> 
+  </div>
+  <span class="texto-nome">{{ (cliente.nome | titlecase) || '-' }}</span>
+</div>
 <div class="card mb-4">
   <div class="conteudo">
     <div class="texto">
       <div class="pull-left titulo">
-        <p>Nome</p>
         <p>CPF</p>
         <p>Data Cadastro</p>
         <p class="ultimo-item">Renda Mensal</p>
       </div>
       <div class="pull-right">
-        <p>{{ cliente.nome | titlecase }}</p>
-        <p>{{ cliente.cpf | cpf }}</p>
-        <p>{{ cliente.dataCadastro | date: 'dd/MM/yyyy' }}</p>
-        <p class="ultimo-item">{{ cliente.rendaMensal | currency:'BRL' }}</p>
+        <p>{{ (cliente.cpf | cpf) || '-' }}</p>
+        <p>{{ (cliente.dataCadastro | date: 'dd/MM/yyyy')  || '-' }}</p>
+        <p class="ultimo-item">{{ (cliente.rendaMensal | currency:'BRL') || '-' }}</p>
       </div>
     </div>
     <div class="divider-v"></div>

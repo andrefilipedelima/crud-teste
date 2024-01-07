@@ -5,7 +5,7 @@
         <div class="input-group buscar">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">
-              <img src="../../assets/imagens/search.svg">
+              <img src="../../assets/imagens/search-icon.svg">
             </span>
           </div>
           <input
@@ -32,11 +32,11 @@
     </div>
   </div>
   <div class="lista-info">
-    <p class="texto-quantidade-lista" *ngIf="filtro === ''">Visualizando {{exibirLista}} de {{clientes.length}} clientes cadastrados</p>
+    <p class="texto-quantidade-lista" *ngIf="filtro === ''">Visualizando <strong>{{exibirLista}}</strong> de <strong>{{clientes.length}}</strong> clientes cadastrados</p>
     <p class="texto-quantidade-lista" *ngIf="filtro !== ''">
       <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length < 1">Não há clientes com esse filtro</span>
-      <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length === 1">Foi encontrado 1 cliente</span>
-      <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length > 1">Foram encontrados {{ (clientes | filtro:{filtro, ordenacao}).length }} clientes</span>
+      <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length === 1">Foi encontrado <strong>1</strong> cliente</span>
+      <span *ngIf="(clientes | filtro:{filtro, ordenacao}).length > 1">Foram encontrados <strong>{{ (clientes | filtro:{filtro, ordenacao}).length }}</strong> clientes</span>
     </p>
   </div>
   <div class="row">
@@ -58,7 +58,7 @@
         <button
           class="btn mostrar-mais"
           type="submit"
-          (click)="mostrarMais(2)"
+          (click)="mostrarMais(3)"
         >
         <i-bs name="plus-square"
               width="16"
@@ -79,7 +79,8 @@
         <span aria-hidden="true">×</span>
      </button>
   </div>
-  <div class="modal-body text-center">
+  <div class="modal-body text-center conteudo-modal">
+    <img src="../../assets/imagens/warning-icon.svg">
      {{ mensagemModalConfirmar || '-' }}
   </div>
   <div class="modal-footer">
@@ -96,7 +97,8 @@
         <span aria-hidden="true">×</span>
      </button>
   </div>
-  <div class="modal-body text-center">
+  <div class="modal-body text-center conteudo-modal">
+    <img src="../../assets/imagens/{{iconModalDelete}}.svg">
      {{ mensagemModalDelete || '-' }}
   </div>
   <div class="modal-footer">

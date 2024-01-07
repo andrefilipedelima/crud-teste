@@ -26,6 +26,7 @@ export class CadastroComponent implements OnInit {
   validar: boolean = false;
   mensagemModalCadastro: string = "";
   tituloModalCadastro: string = "";
+  iconModalCadastro: string = "";
 
   constructor(private formBuilder: FormBuilder,
               private clientesService: ClientesService,
@@ -55,12 +56,14 @@ export class CadastroComponent implements OnInit {
       next: () => {
         this.mensagemModalCadastro = 'Cliente adicionado com sucesso!';
         this.tituloModalCadastro = 'Sucesso';
+        this.iconModalCadastro = "success-icon";
         this.openModal(template);
         this.formCadastro.reset();
       },
       error: () => {
         this.mensagemModalCadastro = 'Não foi possível adicionar novo cliente, tente novamente mais tarde!';
         this.tituloModalCadastro = 'Serviço Indisponível';
+        this.iconModalCadastro = "error-icon";
         this.openModal(template);
       }
     })

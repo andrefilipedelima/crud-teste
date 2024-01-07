@@ -22,6 +22,7 @@ export class ClienteListComponent implements OnInit{
   mensagemModalDelete: string = "";
   tituloModalConfirmar: string = "Excluir";
   tituloModalDelete: string = "";
+  iconModalDelete: string = "";
   idClienteSelecionado: number = 0;
 
   clientes: Cliente[] = [];
@@ -36,7 +37,7 @@ export class ClienteListComponent implements OnInit{
     this.clientesService.listarClientes().subscribe(res => {
       this.clientes = res;
       if(this.clientes.length < this.exibirLista) this.exibirLista = this.clientes.length;
-      else this.exibirLista = 5;
+      else this.exibirLista = 2;
     }, error => {
       this.exibirLista = 0;
     });
@@ -55,6 +56,7 @@ export class ClienteListComponent implements OnInit{
       next: () => {
         this.tituloModalDelete = "Sucesso";
         this.mensagemModalDelete = "Cliente deletado com sucesso!";
+        this.iconModalDelete = "success-icon";
         this.openModal(template);
         this.clientesService.listarClientes().subscribe(res => {
           this.clientes = res;
@@ -63,6 +65,7 @@ export class ClienteListComponent implements OnInit{
       error: () => {
         this.tituloModalDelete = "Serviço Indisponível";
         this.mensagemModalDelete = "Não foi possível deletar o cliente, tente novamente mais tarde!";
+        this.iconModalDelete = "error-icon";
         this.openModal(template);
       }
     })

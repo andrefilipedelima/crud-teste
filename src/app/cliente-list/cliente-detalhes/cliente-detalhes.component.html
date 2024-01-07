@@ -102,7 +102,7 @@
         </div>
         <div class="bloco-botoes">
           <button type="submit" class="btn botao-salvar mt-4" [disabled]="!formCliente.valid">Salvar</button>
-          <button type="button" class="btn botao-cancelar mt-4 ml-3" (click)="voltar()">Voltar</button>
+          <button type="button" class="btn botao-cancelar mt-4 ml-3" (click)="voltarFormulario()">Voltar</button>
         </div>
       </form>
     </div>
@@ -116,7 +116,8 @@
         <span aria-hidden="true">×</span>
      </button>
   </div>
-  <div class="modal-body text-center">
+  <div class="modal-body text-center conteudo-modal">
+    <img src="../../assets/imagens/{{iconModalAtualizar}}.svg">
      {{ mensagemModalAtualizar || '-' }}
   </div>
   <div class="modal-footer">
