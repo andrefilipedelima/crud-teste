@@ -85,7 +85,7 @@
   </div>
   <div class="modal-footer">
      <button type="button" class="btn botao-confirmar" (click)="onClienteDeleted(templateModalDelete, idClienteSelecionado)">Excluir</button>
-     <button type="button" class="btn botao-cancelar" (click)="modalRef.hide()">Voltar</button>
+     <button type="button" class="btn botao-cancelar" (click)="modalRef.hide()">Cancelar</button>
   </div>
 </ng-template>
 
@@ -102,7 +102,7 @@
      {{ mensagemModalDelete || '-' }}
   </div>
   <div class="modal-footer">
-     <button type="button" class="btn botao-confirmar" (click)="modalRef.hide()">Ok</button>
+     <button type="button" class="btn botao-cancelar" (click)="modalRef.hide()">Ok</button>
   </div>
 </ng-template>
 

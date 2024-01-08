@@ -31,15 +31,16 @@
   width: 120px;
 }
 
-.botao-limpar {
+.botao-limpar, .botao-confirmar {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 6px;
   padding: 6px;
-  background: var(--color-support-02-medium);
+  background: white;
   color: var(--color-brand-primary-medium);
+  border: 1px solid var(--color-brand-primary-medium);
   border-radius: 15px;
   width: 120px;
   font-weight: 600;
