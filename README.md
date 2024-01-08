@@ -12,33 +12,36 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 In another terminal Run to start `json-server --watch db.json` for mock
 
+
 ## Tela Lista Clientes
 
   * Responsivo
 
-  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/1a603ee7-1f93-4b36-b2e7-0930393ddb3a)
+  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/47ef9fc4-0ac4-4a66-b383-f2f2e5723a31)
+  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/ca127b6a-0491-48ec-90d6-31d242280848)
 
   * Screen
 
   ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/b800c22f-b642-4d1e-a4e3-c8ebe59b27a4)
 
+
 ## Tela de Cadastro
 
   * Responsivo
 
-  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/b8192ea5-95e5-45d4-a7de-9dc5efcd9921)
+  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/58aab9d6-ae96-49d1-b869-d442c478d2c3)
 
   * Screen
 
-  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/1a9e0a43-e11e-42dc-a3b8-60a52f18a35a)
+  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/33b077c9-91ee-4b34-8bc1-6d99949acfa6)
+
 
 ## Tela de Atualizar cadastro
 
   * Responsivo
 
-  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/64e22596-ae45-409d-bb9b-5e608a9d6b6b)
-
+  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/7afd6909-eb8c-4323-81fc-1e5b01bc3e30)
+ 
   * Screen
 
-  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/a208e1b4-1ce6-4758-a168-a9f7f212cb52)
-
+  ![image](https://github.com/andrefilipedelima/crud-teste/assets/50017889/1e594dba-d12e-48a1-a4c8-5db3ee35d0aa)
